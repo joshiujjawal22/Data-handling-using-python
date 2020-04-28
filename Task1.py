@@ -21,23 +21,14 @@ Print a message:
 """
 
 
-def add_numbers(file: list, tel_numbers: set) -> set:
-    """
-    Given a file adds all available numbers into a set
-    :param file: file containing telephone numbers
-    :param tel_numbers: variable used to contain the telephone numbers
-    :return: tel_numbers with file numbers extracted
-    """
-    for column in [0, 1]:
-        temp_numbers = [data[column] for data in file]
-        tel_numbers.update(temp_numbers)
-    return tel_numbers
+uniqueNumbers = {}
 
+for text in texts:
+    uniqueNumbers[text[0]] = 1
+    uniqueNumbers[text[1]] = 1
 
-if __name__ == '__main__':
-    tel_numbers = set()
+for call in calls:
+    uniqueNumbers[call[0]] = 1
+    uniqueNumbers[call[1]] = 1
 
-    tel_numbers = add_numbers(calls, tel_numbers)
-    tel_numbers = add_numbers(texts, tel_numbers)
-
-    print("There are {} different telephone numbers in the records.".format(len(tel_numbers)))
+print ("There are {} different telephone numbers in the records.".format(len(uniqueNumbers)))
